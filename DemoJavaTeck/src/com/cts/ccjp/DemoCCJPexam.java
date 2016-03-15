@@ -37,12 +37,12 @@ class FileManager{
 		String line = null;
 		BufferedReader br = null;
 		List<CCJPbean> listOfRecords = null;
+		//date for which policy can not be greater
 		String threasholdDate = "01/01/2016";
 		Date td = null;
 		try {
 			td = new SimpleDateFormat("dd/MM/yyyy").parse(threasholdDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
@@ -52,26 +52,27 @@ class FileManager{
 			while((line = br.readLine()) !=null){
 				/*filter condition to check if policy is available*/
 				CCJPbean bean = getBeanForLine(line);
+				//read the actual date from fiel
 				Date actualDate = bean.getStartDate();
 				Calendar cal = Calendar.getInstance();
+				//set the date to calendar instance
 				cal.setTime(actualDate);
+				//add three years
 				cal.add(Calendar.YEAR, 3);
+				//extract date from calendar
 				Date eliDate = cal.getTime();
 				if(eliDate.compareTo(td) < 0)
 					listOfRecords.add(bean);
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
 			try {
 				br.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -80,6 +81,7 @@ class FileManager{
 	
 	public CCJPbean getBeanForLine(String line){
 		CCJPbean bean = new CCJPbean();
+		//escape metacharacter "|"
 		String[] arr = line.split("\\|");
 		bean.setEmpId(Integer.parseInt(arr[0]));
 		bean.setFirstName(arr[1]);
@@ -87,10 +89,10 @@ class FileManager{
 		bean.setPolicyId(Long.valueOf(arr[3]));
 		try {
 			SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy");
+			//convert string to date
 			Date date = formater.parse(arr[4]);
 			bean.setStartDate(date);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return bean;
