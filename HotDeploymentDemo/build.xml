@@ -1,0 +1,43 @@
+<project name="Hot Deployment" default="build" basedir=".">
+
+	<!-- set global properties for this build -->
+  <property name="src" value="client" />
+  <property name="build" value="classes" />
+  <property name="serverSrc"  value="server" />
+  
+  <path id="project.class.path">
+    <pathelement location="${build}" />
+  </path>
+  
+  <target name="prepare">
+    <tstamp/>
+    <!-- create the extra class directories because some labs copy to them -->
+    <property name="serverSrc"  value="server" />
+    <property name="serverClass"  value="serverclass" />
+  </target>
+  
+  <target name="buildClient" depends="prepare" description="build client code">
+    <mkdir dir="${build}" />
+    <javac srcdir="${src}" destdir="${build}" debug="on" classpathref="project.class.path" >
+    </javac> 
+  </target>
+  
+  <target name="buildServer" depends="prepare" if="serverSrc" description="build server code">
+    <mkdir dir="${serverClass}" />
+    <javac srcdir="${serverSrc}" destdir="${serverClass}" debug="on" classpathref="project.class.path" >
+    </javac>
+  </target>
+  
+  <target name="build" depends="buildClient, buildServer" description="build application">
+  </target>
+
+  <target name="run" depends="build" description="run application" >
+    <java classname="com.dvk.Client" classpathref="project.class.path" fork="true" />
+  </target>
+
+  <target name="clean" depends="prepare" description="clean application">
+    <delete dir="${serverClass}" />
+    <delete dir="${build}" />
+  </target>
+
+</project>
