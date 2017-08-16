@@ -4,7 +4,7 @@ public class ReverseStringWays {
 
 	public static void main(String[] args) {
 
-		System.out.println(reverse1("Dharmik"));
+		System.out.println(reverse1("Dha rmik f"));
 	}
 
 	private static String reverse1(String input) {
