@@ -206,6 +206,10 @@ class BasicLinkedList<T> {
 			this.nextNode = nextNode;
 		}
 
+		public void setNodeItem(T nodeItem) {
+			this.nodeItem = nodeItem;
+		}
+
 	} // inner class node ends
 
 	public Node getFirst() {

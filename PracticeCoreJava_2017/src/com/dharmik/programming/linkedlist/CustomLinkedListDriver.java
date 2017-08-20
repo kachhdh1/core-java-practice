@@ -181,6 +181,10 @@ public class CustomLinkedListDriver {
 		train.add(car5);
 		System.out.println(train);
 	}
+	
+	public BasicLinkedList<TrainCar> getTrain(){
+		return train;
+	}
 
 }
 
