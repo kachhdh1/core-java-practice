@@ -5,6 +5,7 @@ import com.dharmik.programming.linkedlist.CustomLinkedListDriver.TrainCar;
 /**
  * this class implements logic for deleting node in the middle 
  * providing only access to that node
+ * 	Input: the node 'c' from the linked list a->b->c->d->e
 	Result: nothing is returned, but the new linked list looks like a->b->d->e
  * @author Dharmik
  *
@@ -34,7 +35,7 @@ public class DeleteNodeInMiddle {
 		}
 		System.out.println("Node to be removed is --> "+runner.getNodeItem());
 		System.out.println("Is node deleted? "+deleteNode(runner));
-		System.out.println("ï¿½fter deletetion --> "+train);
+		System.out.println("Äfter deletetion --> "+train);
 
 	}
 
