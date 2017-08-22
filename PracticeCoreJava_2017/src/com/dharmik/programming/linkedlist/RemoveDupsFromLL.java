@@ -13,7 +13,7 @@ public class RemoveDupsFromLL {
 
 		// /provide train to function to remove duplicates
 		removeDupsWithBuffer(trainApp.train);
-		removeDupsWithoutBuffer(null);
+		removeDupsWithoutBuffer(trainApp.train);
 	}
 
 	/**
@@ -39,12 +39,29 @@ public class RemoveDupsFromLL {
 		System.out.println(train);
 	}
 
+	/**
+	 * this function does not take additional buffer.
+	 * Time - O(N2) and space O(1)
+	 * @param train
+	 */
 	private static void removeDupsWithoutBuffer(BasicLinkedList<TrainCar> train) {
 		BasicLinkedList<TrainCar>.Node head = train.getFirst();
 
+		//we need to pointers, one outer loop and one inner loop
+		BasicLinkedList<TrainCar>.Node current = head;
+		BasicLinkedList<TrainCar>.Node runner = head;
+		
 		// start looping over elements starting from the head
-		while (head != null) {
-			//TODO
+		while (current != null) {
+			
+			while(runner.getNextNode()!=null){
+				if(current.getNodeItem() == runner.getNextNode().getNodeItem()){
+					runner.setNextNode(runner.getNextNode().getNextNode());
+				}
+				runner=runner.getNextNode();
+			}
+			
+			current = current.getNextNode();
 		}
 
 		System.out.println(train);
