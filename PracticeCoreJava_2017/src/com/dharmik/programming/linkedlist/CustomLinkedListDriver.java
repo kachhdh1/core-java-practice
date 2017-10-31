@@ -170,6 +170,7 @@ public class CustomLinkedListDriver {
 		TrainCar car1 = new TrainCar(CarType.BOXCAR, "Amazon Packages");
 		TrainCar car2 = new TrainCar(CarType.BOXCAR, "Amazon Packages");
 		TrainCar car3 = new TrainCar(CarType.BOXCAR, "Paper");
+		TrainCar car6 = new TrainCar(CarType.BOXCAR, "Paper");
 		TrainCar car4 = new TrainCar(CarType.BOXCAR, "Grease");
 		TrainCar car5 = new TrainCar(CarType.BOXCAR, "Grease");
 
@@ -177,6 +178,7 @@ public class CustomLinkedListDriver {
 		train.add(car1);
 		train.add(car2);
 		train.add(car3);
+		train.add(car6);
 		train.add(car4);
 		train.add(car5);
 		System.out.println(train);
