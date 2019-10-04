@@ -1,5 +1,7 @@
 package com.dk.functionaltechniques.avoidingnull;
 
+import java.util.Optional;
+
 public class Customer {
     private RewardPoints rewardPoints;
 
@@ -7,7 +9,7 @@ public class Customer {
         this.rewardPoints = rewardPoints;
     }
 
-    public RewardPoints getRewardPoints() {
-        return rewardPoints;
+    public Optional<RewardPoints> getRewardPoints() {
+        return Optional.ofNullable(rewardPoints);
     }
 }
