@@ -29,3 +29,45 @@ public class DiscountService {
         return Optional.empty();
     }
 }
+
+class Order {
+    public BigDecimal getTotal() {
+        return BigDecimal.TEN;
+    }
+}
+
+class RewardPoints {
+    public final Integer points;
+
+    public RewardPoints(Integer points) {
+        this.points = points;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public RewardPoints combine(RewardPoints rewardPoints) {
+        return new RewardPoints(this.points + rewardPoints.points);
+    }
+
+    @Override
+    public String toString() {
+        return "RewardPoints{" +
+                "points=" + points +
+                '}';
+    }
+}
+
+class Customer {
+    private RewardPoints rewardPoints;
+
+    public void setRewardPoints(RewardPoints rewardPoints) {
+        this.rewardPoints = rewardPoints;
+    }
+
+    public Optional<RewardPoints> getRewardPoints() {
+        return Optional.ofNullable(rewardPoints);
+    }
+}
+
